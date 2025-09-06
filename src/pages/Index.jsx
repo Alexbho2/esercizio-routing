@@ -1,6 +1,9 @@
 import React from "react";
 import{ Link } from "react-router-dom"
-import Card from "../component/card";
+import CardMaterial from "../component/cardMaterial"
+import { Grid } from '@mui/material';
+import users from "../data/user.json"
+
 
 
 
@@ -8,25 +11,28 @@ function Index(){
     return(  
     <>
     <title>Welcome to jurassic park</title>
-    <div>
-    <h1>wubba lubba dub dub </h1>
-    <Link to='/about/123/Jack'>vai da Jack</Link><br></br>
-    <Link to='/about/345/Giorgia'>vai da Giorgia</Link><br></br>
-    <Link to='/about/047/Alessandro'>vai da Alessandro</Link><br></br>
-    <Link to='/about/789/Sara'>vai da Sara</Link>
-
-    <Card
-    id='123'
-    name="Jack"
+    <Grid 
+   container 
+   spacing={3}
+   >
+    <Grid size={12}>
+    <h1>wuba luba dub dub </h1>
     
-    />
+    </Grid>
+    {/* <Link to='/about/123/Jack'>vai da Jack</Link><br></br> */}
 
-    <Card
-        id='345'
-        name="Giorgia"
-    />
+        
 
-    </div>
+    {users.map((item)=>{
+        return(<Grid size={4}>
+            <CardMaterial
+                id={item.id}
+                name={item.name}
+            
+            />
+        </Grid>)
+    })}
+   </Grid>
     </>
     );
 }
