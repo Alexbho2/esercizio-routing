@@ -12,7 +12,7 @@ function Card(props){
             </div>
             </Link>,
 
-            <Link to={'/about' +'/'+ props.id +"/" + props.name}>
+            <Link to={'/about' +'/'+ props.id + "/" + props.name}>
             <div className="card">
                 <p className="title">{props.name}</p>
                 <p className="id">ID:{props.id}</p>

@@ -4,33 +4,39 @@ import users from "../data/user.json";
 
 function About() {
   const params = useParams();
-  const [user, setUser] = useState();
+  const [pokemon, setPokemon] = useState();
 
-  useEffect(() => {
-    const utenteTrovato = users?.find(
-      (item) => item.id.toString() === params.id
+  async function trovaPokemon() {
+    const pokemonTrovato = await fetch(
+      "https://pokeapi.co/api/v2/pokemon/" + params.id
     );
 
-    console.log(utenteTrovato);
-    setUser(utenteTrovato);
+    const dati = await pokemonTrovato.json();
+    setPokemon(dati);
+    console.log(dati);
+  }
+
+  useEffect(() => {
+    trovaPokemon();
   }, [params]);
 
   return (
     <>
       <title>Welcome to jurassic park</title>
-
-      <h1>
-        Mela ID: -- {params.id}
-        <br />
-        NOME : -- {user?.name}
-        <br />
-        EMAIL: -- {user?.email}
-        <br />
-        ETÀ: -- {user?.age}
-        <br />
-        CITTÀ: --{user?.city}
-        <br />
-      </h1>
+      <div></div>
+      <h1>N°Pokedex: {params.id}</h1>
+      <h1>NOME: {pokemon?.name}</h1>
+      <h1>ALTEZZA: {pokemon?.height / 10 + " M"}</h1>
+      {pokemon?.types.map((item, index) => {
+        return (
+          <h1>
+            TIPO{index + 1}:{item.type.name.toUpperCase()}
+          </h1>
+        );
+      })}
+      {pokemon?.abilities.map((item, index) => {
+        return <h1>{item.ability.name}</h1>;
+      })}
     </>
   );
 }

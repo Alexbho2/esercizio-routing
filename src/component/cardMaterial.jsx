@@ -16,8 +16,9 @@ export default function ActionAreaCard(props) {
         <CardMedia
           component="img"
           height="140"
-          image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          image= {props.image}
+          style={{objectFit:"contain"}}
+          alt={props.name}
         />
         
         <CardContent>
@@ -27,7 +28,7 @@ export default function ActionAreaCard(props) {
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                  ID:{props.id}
             </Typography>
-        </CardContent>
+        </CardContent>{" "}
       </CardActionArea>
     </Card>
   </Link>
