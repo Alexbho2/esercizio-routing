@@ -33,6 +33,10 @@ h1 {
   line-height: 1.1;
 }
 
+.pokemon-nascosto{
+  filter: brightness(0) contrast(100%);
+  -webkit-filter: brightness(0) contrast(100%);
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;

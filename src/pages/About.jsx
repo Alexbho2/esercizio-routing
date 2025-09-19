@@ -22,7 +22,7 @@ function About() {
 
   return (
     <>
-      <title>Welcome to jurassic park</title>
+      <title>la pagina info di {pokemon?.name}</title>
       <div></div>
       <h1>N°Pokedex: {params.id}</h1>
       <h1>NOME: {pokemon?.name}</h1>
